@@ -22,8 +22,29 @@ class ResponsiveImageHtmlEditorField_Toolbar extends Extension{
 			return;
 		}
 
-		$fields->removeByName('Dimensions');	
-		$fields->push(DropdownField::create('ResponsiveSet', _t('ResponsiveWYSIWYGImages.IMAGEDIMENSIONS', 'Responsive Dimensions'), $options));
+		$width = $fields->dataFieldByName('Width');
+	
+		if($width){
+			$resize_method_options = array(
+				'Standard' => _t('ResponsiveWYSIWYGImages.RESIZEMETHOD_STANDARD', 'Standard'),
+				'Responsive' => _t('ResponsiveWYSIWYGImages.RESIZEMETHOD_STANDARD', 'Responsive')
+			);
+
+			$fields->insertAfter(DropdownField::create(
+				'ResizeMethod', 
+				_t('ResponsiveWYSIWYGImages.RESIZEMETHOD', 'Resize Method'), 
+				$resize_method_options), 
+				'CSSClass'
+			);	
+		}
+
+		$fields->insertAfter($responsiveSetField = DropdownField::create(
+			'ResponsiveSet', 
+			_t('ResponsiveWYSIWYGImages.IMAGEDIMENSIONS', 'Responsive Dimensions'), 
+			$options),
+			'ResizeMethod'
+		);
+
 		$fields->push(HiddenField::create('ID', null, $file->ID ));
 	}
 
