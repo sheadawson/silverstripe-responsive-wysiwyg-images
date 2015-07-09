@@ -1,6 +1,6 @@
 <?php
 
-class ResponsiveImageHTMLEditorField_Toolbar extends Extension{
+class ResponsiveImageHtmlEditorField_Toolbar extends Extension{
 
 	private static $allowed_actions = array(
 		'getresampledimage'
@@ -15,7 +15,7 @@ class ResponsiveImageHTMLEditorField_Toolbar extends Extension{
 			foreach ($sets as $k => $v) {
 				$options[$k] = isset($sets[$k]['description']) ? $sets[$k]['description'] : $k;
 			}
-			
+
 			$fields->push(DropdownField::create('ResponsiveSet', _t('ResponsiveWYSIWYGImages.IMAGEDIMENSIONS', 'Responsive Dimensions'), $options));
 			$fields->push(HiddenField::create('ID', null, $file->ID ));
 		}
