@@ -1,0 +1,6 @@
+---
+Name: extensions
+---
+HtmlEditorField_Toolbar:
+  extensions:
+    - ResponsiveImageHTMLEditorField_Toolbar
