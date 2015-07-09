@@ -1,0 +1,19 @@
+{
+	"name": "sheadawson/silverstripe-responsive-wysiwyg-images",
+	"description": "Extends silverstripe-responsive-images to allow responsive images in WYSIWYG editor.",
+	"type": "silverstripe-module",
+	"keywords": ["silverstripe", "responsive", "images"],
+	"homepage": "https://github.com/sheadawson/silverstripe-responsive-wysiwyg-images",
+	"authors": [
+	{
+		"name": "Shea Dawson",
+		"email": "shea@livesource.co.nz"
+	}
+	],
+	"require":
+	{
+		"composer/installers": "*",
+		"silverstripe/framework": "3.*",
+		"heyday/silverstripe-responsive-images": "0.1.x@stable"
+	}
+}
