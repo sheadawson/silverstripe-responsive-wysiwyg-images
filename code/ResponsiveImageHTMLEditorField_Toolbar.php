@@ -8,17 +8,23 @@ class ResponsiveImageHtmlEditorField_Toolbar extends Extension{
 
 	public function updateFieldsForImage($fields, $url, $file){
 		$sets = Config::inst()->get('ResponsiveImageExtension', 'sets');
-		if(!empty($sets)){
-			$fields->removeByName('Dimensions');	
-
-			$options = array();
-			foreach ($sets as $k => $v) {
-				$options[$k] = isset($sets[$k]['description']) ? $sets[$k]['description'] : $k;
-			}
-
-			$fields->push(DropdownField::create('ResponsiveSet', _t('ResponsiveWYSIWYGImages.IMAGEDIMENSIONS', 'Responsive Dimensions'), $options));
-			$fields->push(HiddenField::create('ID', null, $file->ID ));
+		if(empty($sets)){
+			return;
 		}
+		
+		$options = array();
+		foreach ($sets as $k => $v) {
+			if(isset($v['wysiwyg']) && $v['wysiwyg']){
+				$options[$k] = isset($v['description']) ? $v['description'] : $k;	
+			}
+		}
+		if(empty($options)){
+			return;
+		}
+
+		$fields->removeByName('Dimensions');	
+		$fields->push(DropdownField::create('ResponsiveSet', _t('ResponsiveWYSIWYGImages.IMAGEDIMENSIONS', 'Responsive Dimensions'), $options));
+		$fields->push(HiddenField::create('ID', null, $file->ID ));
 	}
 
 	public function updatemediaform($form){
