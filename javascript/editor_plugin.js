@@ -19,20 +19,18 @@
 
 					var el = jQuery(this);
 					var shortCode = '[responsiveimage' 
-										+ ' responsiveset="' + el.data('responsiveset') + '"'
-										+ ' id="' + el.data('id') + '"'
-										+ ' width="' + el.attr('width') + '"'
-										+ ' height="' + el.attr('height') + '"'
-										+ ' class="' + el.attr('class') + '"'
-										+ ' thumbnail="' + el.data('thumbnail') + '"'
-										+ ']' + el.data('url')
-										+ '[/responsiveimage]';
+						+ ' responsiveset="' + el.data('responsiveset') + '"'
+						+ ' id="' + el.data('id') + '"'
+						+ ' class="' + el.attr('class') + '"'
+						//+ ' thumbnail="' + el.attr('src') + '"'
+						+ ']' + el.attr('src')
+						+ '[/responsiveimage]';
 					el.replaceWith(shortCode);
 				});
 				o.content = jQuery('<div />').append(content).html(); // Little hack to get outerHTML string
 			});
 
-			var shortTagRegex = /(.?)\[responsiveimages(.*?)\](.+?)\[\/\s*responsiveimage\s*\](.?)/gi;
+			var shortTagRegex = /(.?)\[responsiveimage(.*?)\](.+?)\[\/\s*responsiveimage\s*\](.?)/gi;
 			ed.onBeforeSetContent.add(function(ed, o) {
 				var matches = null, content = o.content;
 				var prefix, suffix, attributes, attributeString, url;
@@ -64,11 +62,9 @@
 					attributes.cssclass = attributes['class'];
 					url = matches[3];
 					imgEl = jQuery('<img/>').attr({
-						'src': attributes['thumbnail'],
+						'src': url,
 						'data-responsiveset': attributes['responsiveset'],
 						'data-id': attributes['id'],
-						'width': attributes['width'],
-						'height': attributes['height'],
 						'class': attributes['cssclass'],
 						'data-url': url
 					}).addClass('responsiveimage');
