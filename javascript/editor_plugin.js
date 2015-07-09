@@ -22,7 +22,6 @@
 						+ ' responsiveset="' + el.data('responsiveset') + '"'
 						+ ' id="' + el.data('id') + '"'
 						+ ' class="' + el.attr('class') + '"'
-						//+ ' thumbnail="' + el.attr('src') + '"'
 						+ ']' + el.attr('src')
 						+ '[/responsiveimage]';
 					el.replaceWith(shortCode);
@@ -65,8 +64,7 @@
 						'src': url,
 						'data-responsiveset': attributes['responsiveset'],
 						'data-id': attributes['id'],
-						'class': attributes['cssclass'],
-						'data-url': url
+						'class': attributes['cssclass']
 					}).addClass('responsiveimage');
 
 					jQuery.each(attributes, function (key, value) {

@@ -42,9 +42,10 @@
 				$.get(link, {responsiveset: attrs['data-responsiveset'], id: attrs['data-id']}, function(data){
 
 					if(data){
-						attrs['src'] = data;	
+						attrs['src'] = data;
+						attrs['data-mce-src'] = data;	
 					}
-
+					
 					// Find the element we are replacing - either the img, it's wrapper parent, or nothing (if creating)
 					var replacee = (node && node.is('img')) ? node : null;
 					if (replacee && replacee.parent().is('.captionImage')) replacee = replacee.parent();
@@ -101,8 +102,6 @@
 				});
 			},
 			updateFromNode: function(node) {
-				console.log(node);
-
 				this.find(':input[name=AltText]').val(node.attr('alt'));
 				this.find(':input[name=Title]').val(node.attr('title'));
 				this.find(':input[name=CSSClass]').val(node.attr('class'));
