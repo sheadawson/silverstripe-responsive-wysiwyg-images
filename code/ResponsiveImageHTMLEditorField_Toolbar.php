@@ -13,6 +13,15 @@ class ResponsiveImageHtmlEditorField_Toolbar extends Extension{
 
 
 	/**
+	 * The default option selected in the ResizeMethod dropdown
+	 * Can be "Responsive" or "Standard"
+	 *
+	 * @var string
+	 **/
+	private static $default_resize_method = 'Responsive';
+
+
+	/**
 	 * Customise Image fields, adds responsive set options
 	 **/
 	public function updateFieldsForImage($fields, $url, $file){
@@ -35,14 +44,17 @@ class ResponsiveImageHtmlEditorField_Toolbar extends Extension{
 	
 		if($width){
 			$resize_method_options = array(
-				'Standard' => _t('ResponsiveWYSIWYGImages.RESIZEMETHOD_STANDARD', 'Standard'),
-				'Responsive' => _t('ResponsiveWYSIWYGImages.RESIZEMETHOD_STANDARD', 'Responsive')
+				'Responsive' => _t('ResponsiveWYSIWYGImages.RESIZEMETHOD_STANDARD', 'Responsive'),
+				'Standard' => _t('ResponsiveWYSIWYGImages.RESIZEMETHOD_STANDARD', 'Standard')
 			);
+
+
 
 			$fields->insertAfter(DropdownField::create(
 				'ResizeMethod', 
 				_t('ResponsiveWYSIWYGImages.RESIZEMETHOD', 'Resize Method'), 
-				$resize_method_options), 
+				$resize_method_options,
+				Config::inst()->get('ResponsiveImageHtmlEditorField_Toolbar', 'default_resize_method')), 
 				'CSSClass'
 			);	
 		}
