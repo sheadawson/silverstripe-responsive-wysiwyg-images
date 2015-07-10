@@ -15,7 +15,7 @@ $ composer require sheadawson/silverstripe-responsive-wysiwyg-images dev-master
 
 ##Usage
 
-Define your responsive image sets in yml config as you normally would. Sets that you would like to be available in the WYSIWYG image insert form should specify an additional "wysiwyg" property to opt-in.
+Define your responsive image sets in yml config as you normally would. Sets that you would like to be available in the WYSIWYG image insert form should specify an additional "wysiwyg" property and "description" property to opt-in.
 
 Example: 
 
@@ -24,6 +24,7 @@ ResponsiveImageExtension:
   sets:
     ResponsiveSet1:
       wysiwyg: true
+      description: "ResponsiveSet1, used for X and Y"
       sizes:
         - {query: "(min-width: 200px)", size: 100}
         - {query: "(min-width: 800px)", size: 400}
