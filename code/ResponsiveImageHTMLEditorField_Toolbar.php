@@ -1,11 +1,20 @@
 <?php
-
+/**
+ * ResponsiveImageHtmlEditorField_Toolbar
+ *
+ * @package silverstripe-responsive-wysiwyg-image
+ * @author shea@livesource.co.nz
+ **/
 class ResponsiveImageHtmlEditorField_Toolbar extends Extension{
 
 	private static $allowed_actions = array(
 		'getresampledimage'
 	);
 
+
+	/**
+	 * Customise Image fields, adds responsive set options
+	 **/
 	public function updateFieldsForImage($fields, $url, $file){
 		$sets = Config::inst()->get('ResponsiveImageExtension', 'sets');
 		if(empty($sets)){
@@ -41,7 +50,7 @@ class ResponsiveImageHtmlEditorField_Toolbar extends Extension{
 		$fields->insertAfter($responsiveSetField = DropdownField::create(
 			'ResponsiveSet', 
 			_t('ResponsiveWYSIWYGImages.IMAGEDIMENSIONS', 'Responsive Dimensions'), 
-			$options),
+			$options)->addExtraClass('last'),
 			'ResizeMethod'
 		);
 
@@ -52,6 +61,14 @@ class ResponsiveImageHtmlEditorField_Toolbar extends Extension{
 		Requirements::javascript(RESPONSIVE_WYSIWYG_IMAGES_DIR . '/javascript/HTMLEditorField.js');
 	}
 
+
+	/**
+	 * Controller method, returns filename of default resampled 
+	 * responsive image for set. This gets loaded into the editor via ajax
+	 * it's the image displayed in the editor
+	 *
+	 * @return string
+	 **/
 	public function getresampledimage($request){
 		$imageID = $request->getVar('id');
 		$setName = $request->getVar('responsiveset');

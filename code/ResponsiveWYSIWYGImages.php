@@ -1,5 +1,10 @@
 <?php
-
+/**
+ * ResponisveWYSIWYGImages
+ *
+ * @package silverstripe-responsive-wysiwyg-image
+ * @author shea@livesource.co.nz
+ **/
 class ResponisveWYSIWYGImages extends Object{
 
 	/**
