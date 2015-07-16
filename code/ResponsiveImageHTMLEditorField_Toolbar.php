@@ -70,7 +70,7 @@ class ResponsiveImageHtmlEditorField_Toolbar extends Extension{
 	}
 
 	public function updatemediaform($form){
-		Requirements::javascript(RESPONSIVE_WYSIWYG_IMAGES_DIR . '/javascript/HTMLEditorField.js');
+		Requirements::javascript(RESPONSIVE_WYSIWYG_IMAGES_DIR . '/javascript/HtmlEditorField.js');
 	}
 
 
