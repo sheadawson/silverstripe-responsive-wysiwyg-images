@@ -1,11 +1,11 @@
 # silverstripe-responsive-wysiwyg-images
 
-Extends silverstripe-responsive-images to allow responsive images in WYSIWYG editor. When the user selects an image to insert, they are given the option of responsive sizing or standard sizing. If they choose responsive, they can select a Responsive Set to use, these sets are defined in your yml configuration. If they choose standard resizing, they get the normal Width x Height fields. 
+Extends [silverstripe-responsive-images](https://github.com/sheadawson/silverstripe-responsive-wysiwyg-images) to allow responsive images in WYSIWYG editor. When the user selects an image to insert, they are given the option of responsive sizing or standard sizing. If they choose responsive, they can select a Responsive Set to use, these sets are defined in your yml configuration. If they choose standard resizing, they get the normal Width x Height fields. 
 
 ##Requirements
 
 SilverStripe 3
-SilverStripe Responsive Images module 
+[SilverStripe Responsive Images module](https://github.com/sheadawson/silverstripe-responsive-wysiwyg-images)
 
 ##Installation
 
