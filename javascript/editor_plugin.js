@@ -18,7 +18,7 @@
 				content.find('img[data-responsiveset]').each(function() {
 
 					var el = jQuery(this);
-					var shortCode = '[responsiveimage' 
+					var shortCode = '[responsiveimage'
 						+ ' responsiveset="' + el.data('responsiveset') + '"'
 						+ ' id="' + el.data('id') + '"'
 						+ ' class="' + el.attr('class') + '"'

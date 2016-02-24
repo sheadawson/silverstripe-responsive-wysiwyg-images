@@ -12,7 +12,7 @@
 				this._super();
 			},
 			onchange: function(){
-				this.updateDimensionsFields();	
+				this.updateDimensionsFields();
 			},
 			updateDimensionsFields: function(){
 				var self = this;
@@ -64,7 +64,7 @@
 				var self = $(this);
 				// Get the attributes & extra data
 				var attrs = self.getAttributes();
-			
+
 				var doInsert = function(attrs, ed, self){
 					var extraData = {
 						// TODO this should use getExtraData(), but it breaks for some reason...
@@ -74,7 +74,7 @@
 					var node = form.getSelection();
 					var img = (node && node.is('img')) ? node : $('<img />');
 					if (!ed) ed = form.getEditor();
-					
+
 					// Find the element we are replacing - either the img, it's wrapper parent, or nothing (if creating)
 					var replacee = (node && node.is('img')) ? node : null;
 					if (replacee && replacee.parent().is('.captionImage')) replacee = replacee.parent();
@@ -145,7 +145,7 @@
 					$.get(link, {responsiveset: attrs['data-responsiveset'], id: attrs['data-id']}, function(imgsrc){
 						if(imgsrc){
 							attrs['src'] = imgsrc;
-							attrs['data-mce-src'] = imgsrc;	
+							attrs['data-mce-src'] = imgsrc;
 						}
 						doInsert(attrs, ed, self);
 					});
@@ -159,15 +159,15 @@
 				this.find(':input[name=Title]').val(node.attr('title'));
 				this.find(':input[name=CSSClass]').val(node.attr('class'));
 				this.find(':input[name=CaptionText]').val(node.siblings('.caption:first').text());
-				
+
 				if(node.data('responsiveset')){
 					this.find(':input[name=ResponsiveSet]').val(node.data('responsiveset'));
 
-					this.find(':input[name=ResizeMethod]').val('Responsive').trigger('change');	
+					this.find(':input[name=ResizeMethod]').val('Responsive').trigger('change');
 				}else{
 					this.find(':input[name=Width]').val(node.width());
 					this.find(':input[name=Height]').val(node.height());
-					this.find(':input[name=ResizeMethod]').val('Standard').trigger('change');	
+					this.find(':input[name=ResizeMethod]').val('Standard').trigger('change');
 				}
 			}
 		});
