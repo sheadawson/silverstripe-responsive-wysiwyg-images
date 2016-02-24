@@ -31,7 +31,7 @@ class ResponsiveImageHtmlEditorField_Toolbar extends Extension
         if (empty($sets)) {
             return;
         }
-        
+
         $options = array();
         foreach ($sets as $k => $v) {
             if (isset($v['wysiwyg']) && $v['wysiwyg']) {
@@ -43,7 +43,7 @@ class ResponsiveImageHtmlEditorField_Toolbar extends Extension
         }
 
         $width = $fields->dataFieldByName('Width');
-    
+
         if ($width) {
             $resize_method_options = array(
                 'Responsive' => _t('ResponsiveWYSIWYGImages.RESIZEMETHOD_STANDARD', 'Responsive'),
@@ -78,7 +78,7 @@ class ResponsiveImageHtmlEditorField_Toolbar extends Extension
 
 
     /**
-     * Controller method, returns filename of default resampled 
+     * Controller method, returns filename of default resampled
      * responsive image for set. This gets loaded into the editor via ajax
      * it's the image displayed in the editor
      *
@@ -88,7 +88,7 @@ class ResponsiveImageHtmlEditorField_Toolbar extends Extension
     {
         $imageID = $request->getVar('id');
         $setName = $request->getVar('responsiveset');
-        
+
         $sets = Config::inst()->get('ResponsiveImageExtension', 'sets');
         if (isset($sets[$setName]) && $image = Image::get()->byID($imageID)) {
             $set = $sets[$setName];
@@ -100,7 +100,7 @@ class ResponsiveImageHtmlEditorField_Toolbar extends Extension
             } else {
                 $dimensions = array($width, $height);
             }
-    
+
             return $image->getFormattedImage($set['method'], $dimensions[0], $dimensions[1])->owner->Link();
         }
     }
